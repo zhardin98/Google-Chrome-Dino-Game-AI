@@ -284,8 +284,7 @@ void addObstacle() {
   randomAdditionHistory.add(randomAddition);
   obstacleTimer = 0;
 }
-//---------------------------------------------------------------------------------------------------------------------------------------------------------
-//what do you think this does?
+
 void showObstacles() {
   for (int i = 0; i< grounds.size(); i++) {
     grounds.get(i).show();

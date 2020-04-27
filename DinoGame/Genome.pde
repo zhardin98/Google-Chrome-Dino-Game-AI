@@ -105,10 +105,10 @@ class Genome {
     }
   }
   //-----------------------------------------------------------------------------------------------------------------------------------------
-  //mutate the NN by adding a new node
-  //it does this by picking a random connection and disabling it then 2 new connections are added 
-  //1 between the input node of the disabled connection and the new node
-  //and the other between the new node and the output of the disabled connection
+  /*mutate the NN by adding a new node
+  it does this by picking a random connection and disabling it then 2 new connections are added 
+  1 between the input node of the disabled connection and the new node
+  and the other between the new node and the output of the disabled connection*/
   void addNode(ArrayList<connectionHistory> innovationHistory) {
     //pick a random connection to create a node between
     if (genes.size() ==0) {
@@ -198,9 +198,9 @@ class Genome {
   }
 
   //-------------------------------------------------------------------------------------------------------------------------------------------
-  //returns the innovation number for the new mutation
-  //if this mutation has never been seen before then it will be given a new unique innovation number
-  //if this mutation matches a previous mutation then it will be given the same innovation number as the previous one
+  /*returns the innovation number for the new mutation
+  if this mutation has never been seen before then it will be given a new unique innovation number
+  if this mutation matches a previous mutation then it will be given the same innovation number as the previous one*/
   int getInnovationNumber(ArrayList<connectionHistory> innovationHistory, Node from, Node to) {
     boolean isNew = true;
     int connectionInnovationNumber = nextConnectionNo;
@@ -211,8 +211,8 @@ class Genome {
         break;
       }
     }
-
-    if (isNew) {//if the mutation is new then create an arrayList of integers representing the current state of the genome
+    //if the mutation is new then create an arrayList of integers representing the current state of the genome
+    if (isNew) {
       ArrayList<Integer> innoNumbers = new ArrayList<Integer>();
       for (int i = 0; i< genes.size(); i++) {//set the innovation numbers
         innoNumbers.add(genes.get(i).innovationNo);
@@ -308,12 +308,11 @@ class Genome {
         if (rand<0.5) {
           childGenes.add(genes.get(i));
 
-          //get gene from this fucker
+         
         } else {
-          //get gene from parent2
           childGenes.add(parent2.genes.get(parent2gene));
         }
-      } else {//disjoint or excess gene
+      } else {
         childGenes.add(genes.get(i));
         setEnabled = genes.get(i).enabled;
       }
